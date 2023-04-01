@@ -1,6 +1,8 @@
 import ImageSequence from "@/components/ImageSequence";
 import IntroSection from "@/components/IntroSection";
 import Head from "next/head";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
@@ -11,11 +13,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ImageSequence
-        className="h-[600vh] bg-slate-950 bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
-        frames={57}
-        format={"/assets/box/<id>.webp"}
-      />
+      <Navbar />
+      <Hero />
       <IntroSection />
       <ImageSequence
         className="h-[900vh] bg-slate-900"
