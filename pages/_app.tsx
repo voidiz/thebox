@@ -10,6 +10,7 @@ import {
   DirectionalLight,
   AmbientLight,
 } from "three";
+import { PreloadedAssetsContextProvider } from "@/contexts/PreloadedAssets";
 
 // Necessary for framer-motion-3d?
 extend({
@@ -22,5 +23,9 @@ extend({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <PreloadedAssetsContextProvider>
+      <Component {...pageProps} />
+    </PreloadedAssetsContextProvider>
+  );
 }
