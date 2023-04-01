@@ -3,11 +3,18 @@ import IntroSection from "@/components/IntroSection";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { PreloadedAssetsContext } from "@/contexts/PreloadedAssets";
+import Spinner from "@/components/Spinner";
 
 export default function Home() {
   const introRef = useRef<HTMLDivElement>(null);
   const specsRef = useRef<HTMLDivElement>(null);
+  const { loaded } = useContext(PreloadedAssetsContext);
+
+  if (!loaded) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -25,8 +32,7 @@ export default function Home() {
       <div ref={specsRef}>
         <ImageSequence
           className="h-[900vh] bg-slate-900"
-          frames={120}
-          format={"/assets/boxfalling/<id>.webp"}
+          assetKey="/assets/boxfalling/<id>.webp"
         />
       </div>
     </>

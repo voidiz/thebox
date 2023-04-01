@@ -1,3 +1,4 @@
+import { ASSET_KEY, PreloadedAssetsContext } from "@/contexts/PreloadedAssets";
 import {
   useMotionValueEvent,
   useScroll,
@@ -5,22 +6,18 @@ import {
   motion,
   useInView,
 } from "framer-motion";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useContext, useEffect, useRef } from "react";
 
 type ImageSequenceProps = {
-  frames: number;
-
-  // Image path where the file id sequence is replaced with `<id>`
-  // e.g., `/assets/box/<id>.webp`
-  format: string;
-
+  assetKey: ASSET_KEY;
   className?: string;
 };
 
-function ImageSequence({ frames, format, className = "" }: ImageSequenceProps) {
+function ImageSequence({ assetKey, className = "" }: ImageSequenceProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imagesRef = useRef<HTMLImageElement[]>([]);
+
+  const { assets, loaded } = useContext(PreloadedAssetsContext);
 
   const isInView = useInView(parentRef, { margin: "-400px 0px" });
 
@@ -30,62 +27,46 @@ function ImageSequence({ frames, format, className = "" }: ImageSequenceProps) {
   });
 
   const imageIndex = useTransform(scrollYProgress, (value) => {
-    return Math.floor(value * (frames - 1));
+    if (!loaded) {
+      return 0;
+    }
+
+    return Math.floor(value * (assets[assetKey].frames - 1));
   });
 
-  const getImage = useCallback(
-    (idx: number) => format.replace("<id>", idx.toString().padStart(4, "0")),
-    [format]
-  );
-
-  const preloadImage = useCallback(
+  const drawImage = useCallback(
     (idx: number) => {
-      return new Promise<HTMLImageElement>((resolve, reject) => {
-        const image = new Image();
-        image.src = getImage(idx);
-        image.onload = () => {
-          resolve(image);
-        };
-        image.onerror = image.onabort = () => {
-          reject(image);
-        };
+      if (!canvasRef.current || !loaded) {
+        return;
+      }
+
+      const ctx = canvasRef.current.getContext("2d");
+      if (!ctx) {
+        console.error("Canvas not supported");
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.drawImage(assets[assetKey].elements[idx], 0, 0);
       });
     },
-    [getImage]
+    [assetKey, assets, loaded]
   );
 
-  // Preload images
-  useEffect(() => {
-    (async function() {
-      const images = await Promise.all(
-        [...Array(frames).fill(0)].map((_, i) => preloadImage(i + 1))
-      );
-
-      imagesRef.current = images;
-    })();
-  }, [frames, preloadImage]);
-
-  useMotionValueEvent(imageIndex, "change", (value) => {
-    if (!canvasRef.current || imagesRef.current.length === 0) {
-      return;
-    }
-
-    const ctx = canvasRef.current.getContext("2d");
-    if (!ctx) {
-      console.error("Canvas not supported");
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-      ctx.drawImage(imagesRef.current[value], 0, 0);
-    });
+  useMotionValueEvent(imageIndex, "change", (idx) => {
+    drawImage(idx);
   });
+
+  useEffect(() => {
+    drawImage(0);
+  }, [drawImage]);
 
   return (
     <div ref={parentRef} className={className}>
       <div className="fixed top-1/2 -translate-y-1/2 w-screen flex items-center justify-center">
         <motion.canvas
+          initial={{ opacity: 0 }}
           animate={{
             opacity: isInView ? 1 : 0,
           }}
