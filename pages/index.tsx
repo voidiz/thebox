@@ -1,3 +1,5 @@
+import ImageSequence from "@/components/ImageSequence";
+import IntroSection from "@/components/IntroSection";
 import Head from "next/head";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,11 +14,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="relative max-w-8xl mx-auto">
-        <Hero />
-        <Hero />
-        <Hero />
-      </main>
+      <Hero />
+      <IntroSection />
+      <ImageSequence
+        className="h-[900vh] bg-slate-900"
+        frames={120}
+        format={"/assets/boxfalling/<id>.webp"}
+      />
     </>
   );
 }

@@ -1,17 +1,18 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
+import ImageSequence from "@/components/ImageSequence";
 
 function Hero() {
   return (
     <div className="relative w-full">
-      <div className="w-screen h-screen">
-        <Image className="aspect-square object-contain" src="/img/box.png" alt="Box" fill />
-      </div>
+      <ImageSequence
+        className="h-[600vh] bg-slate-950 bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
+        frames={57}
+        format={"/assets/box/<id>.webp"}
+      />
       <motion.div
         initial={{
           opacity: 0,
           scale: 0.9,
-
         }}
         animate={{
           opacity: 1,
@@ -19,13 +20,15 @@ function Hero() {
         }}
         transition={{
           type: "spring",
-          duration: .6
+          duration: 0.6,
         }}
-        className="overflow-hidden absolute text-7xl text-white text-center font-bold lowercase top-1/3 left-1/2 place-self-center -translate-x-1/2">
-        the box, revolutionizing boxes
-        since tomorrow.
+        className="overflow-hidden absolute top-[55vh] left-1/2 place-self-center -translate-x-1/2"
+      >
+        <h2 className="text-7xl text-white text-center font-bold lowercase">
+          the box, revolutionizing boxes since tomorrow.
+        </h2>
       </motion.div>
-    </div >
+    </div>
   );
 }
 export default Hero;
