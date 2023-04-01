@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.61.1",
+    "@react-three/fiber": "^8.12.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.10.0",
+    "framer-motion-3d": "^10.10.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "three": "^0.151.2",
     "typescript": "5.0.3"
   },
   "devDependencies": {
