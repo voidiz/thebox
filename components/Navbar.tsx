@@ -6,6 +6,7 @@ import React from "react";
 type NavbarProps = {
   introRef: React.RefObject<HTMLDivElement>;
   specsRef: React.RefObject<HTMLDivElement>;
+  footerRef: React.RefObject<HTMLDivElement>;
 };
 
 function Button({
@@ -29,7 +30,7 @@ function Button({
   );
 }
 
-function Navbar({ introRef, specsRef }: NavbarProps) {
+function Navbar({ introRef, specsRef, footerRef }: NavbarProps) {
   const { scrollYProgress } = useScroll();
   const [scrolledUp, setScrolledUp] = useState(true);
 
@@ -53,7 +54,7 @@ function Navbar({ introRef, specsRef }: NavbarProps) {
         <div className="border-l-2 border-slate-600 pl-8 flex gap-8">
           <Button text="info" linkRef={introRef} />
           <Button text="specs" linkRef={specsRef} />
-          <Button text="contact" />
+          <Button text="contact" linkRef={footerRef} />
         </div>
       </div>
     </motion.div>

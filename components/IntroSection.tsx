@@ -11,7 +11,7 @@ function IntroSection() {
   const box3 = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={ref} className="bg-gradient-to-b from-slate-950 to-slate-900">
+    <div ref={ref}>
       <BoxGrid parentRef={ref} />
       <div ref={box1} className="h-[800px] w-full">
         <FadingElement parentRef={box1} xOffset={100}>

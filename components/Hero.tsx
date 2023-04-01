@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div className="relative w-full">
       <ImageSequence
-        className="h-[600vh] bg-slate-950 bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
+        className="h-[600vh] bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
         assetKey="/assets/box/<id>.webp"
       />
       <motion.div
