@@ -26,7 +26,11 @@ function FadingElement({
     layoutEffect: false,
   });
 
-  const opacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75], [0, 1, 0]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.3, 0.7, 0.75],
+    [0, 1, 1, 0]
+  );
 
   const y = useTransform(
     scrollYProgress,
@@ -62,7 +66,7 @@ function FadingElement({
 
   return (
     <motion.div
-      className="fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center justify-center"
+      className="fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center justify-center backdrop-blur-sm"
       style={{ x: xOffset, y, opacity }}
       variants={variants}
       animate={variant}
