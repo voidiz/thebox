@@ -1,3 +1,5 @@
+import ImageSequence from "@/components/ImageSequence";
+import IntroSection from "@/components/IntroSection";
 import Head from "next/head";
 
 export default function Home() {
@@ -9,7 +11,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-indigo-500 text-3xl p-24">Hello</h1>
+      <ImageSequence
+        className="h-[600vh] bg-slate-950 bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
+        frames={57}
+        format={"/assets/box/<id>.webp"}
+      />
+      <IntroSection />
+      <ImageSequence
+        className="h-[900vh] bg-slate-900"
+        frames={120}
+        format={"/assets/boxfalling/<id>.webp"}
+      />
     </>
   );
 }
