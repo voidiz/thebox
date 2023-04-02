@@ -6,7 +6,7 @@ export type ASSET_KEY =
 
 // Key, number of frames
 const ASSETS: Record<ASSET_KEY, number> = {
-  "/assets/boxfalling/<id>.webp": 120,
+  "/assets/boxfalling/<id>.webp": 119,
   "/assets/box/<id>.webp": 57,
 };
 
