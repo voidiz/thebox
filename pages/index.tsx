@@ -9,6 +9,7 @@ import Spinner from "@/components/Spinner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const specsRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -27,15 +28,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-        <Navbar introRef={introRef} specsRef={specsRef} footerRef={footerRef} />
-        <Hero />
+        <Navbar heroRef={heroRef} introRef={introRef} specsRef={specsRef} footerRef={footerRef} />
+        <div ref={heroRef} >
+          <Hero />
+        </div>
         <div ref={introRef}>
           <IntroSection />
         </div>
         <div ref={specsRef}>
           <ImageSequence
             className="h-[900vh]"
-            assetKey="/assets/boxfalling/<id>.webp"
+            assetKey="/assets/anim2/<id>.webp"
           />
         </div>
         <div ref={footerRef}>
