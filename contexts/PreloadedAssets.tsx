@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export type ASSET_KEY =
   | "/assets/boxfalling/<id>.webp"
-  | "/assets/heroAnim/<id>.webp"
+  | "/assets/heroAnim/<id>.webp";
 
 // Key, number of frames
 const ASSETS: Record<ASSET_KEY, number> = {
@@ -17,13 +17,13 @@ type PreloadedAsset = {
 
 type PreloadedAssetsValue =
   | {
-    loaded: false;
-    assets: {};
-  }
+      loaded: false;
+      assets: {};
+    }
   | {
-    loaded: true;
-    assets: Record<ASSET_KEY, PreloadedAsset>;
-  };
+      loaded: true;
+      assets: Record<ASSET_KEY, PreloadedAsset>;
+    };
 
 const initialValue = {
   loaded: false as false,
@@ -75,7 +75,7 @@ export function PreloadedAssetsContextProvider({
     useState<PreloadedAssetsValue>(initialValue);
 
   useEffect(() => {
-    (async function() {
+    (async function () {
       const assets = await loadPreloadedAssets();
       setPreloadedAssetsValue(assets);
     })();

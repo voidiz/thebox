@@ -7,6 +7,7 @@ import { useContext, useRef } from "react";
 import { PreloadedAssetsContext } from "@/contexts/PreloadedAssets";
 import Spinner from "@/components/Spinner";
 import Footer from "@/components/Footer";
+import SpecsSection from "@/components/SpecsSection";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -36,10 +37,7 @@ export default function Home() {
           <IntroSection />
         </div>
         <div ref={specsRef}>
-          <ImageSequence
-            className="h-[900vh]"
-            assetKey="/assets/boxfalling/<id>.webp"
-          />
+          <SpecsSection />
         </div>
         <div ref={footerRef}>
           <Footer />
