@@ -9,6 +9,10 @@ import {
   Group,
   DirectionalLight,
   AmbientLight,
+  RectAreaLight,
+  PointLight,
+  SpotLight,
+  CubeCamera,
 } from "three";
 import { PreloadedAssetsContextProvider } from "@/contexts/PreloadedAssets";
 
@@ -20,6 +24,10 @@ extend({
   Group,
   DirectionalLight,
   AmbientLight,
+  RectAreaLight,
+  PointLight,
+  SpotLight,
+  CubeCamera,
 });
 
 export default function App({ Component, pageProps }: AppProps) {

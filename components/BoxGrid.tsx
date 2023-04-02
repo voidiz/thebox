@@ -10,8 +10,9 @@ import {
   MotionCanvas,
   motion,
 } from "framer-motion-3d";
-import { useFrame } from "@react-three/fiber";
+import { MeshProps, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { Environment } from "@react-three/drei";
 
 type MeshData = {
   node: THREE.Mesh;
@@ -26,21 +27,18 @@ type BoxGridProps = {
 const SIDE = 8;
 const WIDTH = 100;
 const BOX_GEOMETRY = new THREE.BoxGeometry(WIDTH, WIDTH, WIDTH);
-const MATERIAL = new THREE.MeshStandardMaterial({
-  color: "#475569",
+const MATERIAL = new THREE.MeshPhysicalMaterial({
+  metalness: 1.0,
+  roughness: 0.1,
+  reflectivity: 1.0,
+  color: "#0f0f0f",
 });
 
 function Lights() {
   return (
     <>
       <ambientLight />
-      <directionalLight color="#0f172a" intensity={1} rotation={[1.8, 0, 0]} />
-      <directionalLight
-        intensity={1}
-        color="red"
-        position={[0, 0, 5]}
-        rotation={[0, 0, 0]}
-      />
+      <pointLight intensity={0.5} color="white" position={[5, 5, 10]} />
     </>
   );
 }
@@ -98,8 +96,8 @@ function Geometry({
             }}
             position={[x, y, 0]}
             rotation={[rX, 0, rZ]}
-            geometry={BOX_GEOMETRY}
             material={MATERIAL}
+            geometry={BOX_GEOMETRY}
           />
         );
       }),
@@ -151,16 +149,24 @@ function BoxGrid({ parentRef }: BoxGridProps) {
       animate={variant}
       className="fixed top-1/2 -translate-y-1/2 w-screen h-screen"
     >
-      <MotionCanvas>
+      <MotionCanvas
+        gl={{
+          toneMapping: THREE.ACESFilmicToneMapping,
+          antialias: true,
+          outputEncoding: THREE.sRGBEncoding,
+        }}
+        dpr={[1, 2]}
+      >
+        <Environment preset="dawn" />
         <Lights />
+        <Geometry parentRef={parentRef} />
         <LayoutOrthographicCamera
           makeDefault
           position={[-200, -200, 800]}
-          near={0}
+          near={1}
           zoom={1.4}
-          far={2000}
+          far={3000}
         />
-        <Geometry parentRef={parentRef} />
       </MotionCanvas>
     </motion2d.div>
   );

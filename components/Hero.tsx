@@ -40,7 +40,7 @@ function Hero() {
         />
       </motion.div>
       <ImageSequence
-        className="h-[600vh] bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
+        className="h-[400vh] bg-[url('/assets/effect.webp')] bg-no-repeat bg-right-top"
         assetKey="/assets/heroAnim/<id>.webp"
       />
       <motion.div className="overflow-hidden absolute top-[65vh] left-1/2 place-self-center -translate-x-1/2">
@@ -55,7 +55,7 @@ function Hero() {
             delay: 0.3,
             ease: "easeInOut",
           }}
-          className="text-5xl text-white text-center font-bold lowercase"
+          className="text-2xl md:text-5xl text-white text-center font-bold lowercase"
           ref={heroTextRef}
         >
           revolutionizing boxes since tomorrow.

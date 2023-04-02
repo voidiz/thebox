@@ -7,6 +7,7 @@ import { useContext, useRef } from "react";
 import { PreloadedAssetsContext } from "@/contexts/PreloadedAssets";
 import Spinner from "@/components/Spinner";
 import Footer from "@/components/Footer";
+import SpecsSection from "@/components/SpecsSection";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -25,9 +26,9 @@ export default function Home() {
         <title>the box</title>
         <meta name="description" content="just a box" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="bg-pattern to-slate-950">
         <Navbar heroRef={heroRef} introRef={introRef} specsRef={specsRef} footerRef={footerRef} />
         <div ref={heroRef} >
           <Hero />
@@ -36,10 +37,7 @@ export default function Home() {
           <IntroSection />
         </div>
         <div ref={specsRef}>
-          <ImageSequence
-            className="h-[900vh]"
-            assetKey="/assets/anim2/<id>.webp"
-          />
+          <SpecsSection />
         </div>
         <div ref={footerRef}>
           <Footer />

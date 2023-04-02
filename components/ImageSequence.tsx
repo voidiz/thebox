@@ -19,7 +19,7 @@ function ImageSequence({ assetKey, className = "" }: ImageSequenceProps) {
 
   const { assets, loaded } = useContext(PreloadedAssetsContext);
 
-  const isInView = useInView(parentRef, { margin: "-400px 0px" });
+  const isInView = useInView(parentRef, { margin: "-400px 50px" });
 
   const { scrollYProgress } = useScroll({
     target: parentRef,
