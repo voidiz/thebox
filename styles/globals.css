@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-950
+  @apply bg-slate-950;
+}
+
+.bg-pattern {
+  background-color: #020617;
+  opacity: 1;
+  background-image: linear-gradient(#0f172a 1.1px, transparent 1.1px),
+    linear-gradient(to right, #0f172a 1.1px, #020617 1.1px);
+  background-size: 22px 22px;
 }
