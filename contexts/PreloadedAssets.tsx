@@ -1,17 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 export type ASSET_KEY =
-  | "/assets/box/<id>.webp"
   | "/assets/boxfalling/<id>.webp"
   | "/assets/heroAnim/<id>.webp"
-  | "/assets/anim2/<id>.webp";
 
 // Key, number of frames
 const ASSETS: Record<ASSET_KEY, number> = {
   "/assets/boxfalling/<id>.webp": 119,
-  "/assets/box/<id>.webp": 57,
   "/assets/heroAnim/<id>.webp": 120,
-  "/assets/anim2/<id>.webp": 120,
 };
 
 type PreloadedAsset = {

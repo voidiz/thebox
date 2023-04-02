@@ -38,7 +38,7 @@ export default function Home() {
         <div ref={specsRef}>
           <ImageSequence
             className="h-[900vh]"
-            assetKey="/assets/anim2/<id>.webp"
+            assetKey="/assets/boxfalling/<id>.webp"
           />
         </div>
         <div ref={footerRef}>
