@@ -25,7 +25,7 @@ export default function Home() {
         <title>the box</title>
         <meta name="description" content="just a box" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
         <Navbar heroRef={heroRef} introRef={introRef} specsRef={specsRef} footerRef={footerRef} />
