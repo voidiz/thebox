@@ -15,7 +15,7 @@ function Link({ url, text }: { url: string; text: string }) {
 function Footer() {
   return (
     <div className="relative z-10 flex flex-col items-end justify-center mx-auto max-w-8xl h-[200px] 8xl:rounded-lg p-8">
-      <Image src="/img/logo-white.svg" alt="Logo" width={96} height={28} />
+      <Image className="p-4" src="/img/logo-3-white.svg" alt="Logo" width={96 * 3} height={28 * 3} />
       <p className="mt-4 text-neutral-400 text-md font-medium">
         made without{" "}
         <Image

@@ -30,10 +30,10 @@ function IntroSection() {
         <FadingElement parentRef={box2} xOffset={-500}>
           <InfoOverlay>
             <h2 className="font-bold text-6xl">
-              the best invention since 1996
+              the best invention since 2024
             </h2>
             <p className="font-medium text-4xl text-neutral-300">
-              a very good product i think
+              a very good product we think
             </p>
           </InfoOverlay>
         </FadingElement>
