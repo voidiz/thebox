@@ -12,11 +12,13 @@ type FadingElementProps = {
   parentRef: React.RefObject<HTMLElement>;
   xOffset?: number;
   yOffset?: number;
+  className?: string;
 };
 
 function FadingElement({
   children,
   parentRef,
+  className = "",
   xOffset = 0,
   yOffset = 0,
 }: FadingElementProps) {
@@ -66,7 +68,7 @@ function FadingElement({
 
   return (
     <motion.div
-      className="fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center justify-center backdrop-blur-sm"
+      className={`fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center justify-center backdrop-blur-sm ${className}`}
       style={{ x: xOffset, y, opacity }}
       variants={variants}
       animate={variant}

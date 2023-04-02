@@ -56,7 +56,7 @@ function Navbar({ heroRef, introRef, specsRef, footerRef }: NavbarProps) {
     >
       <div className="flex justify-between h-full mx-auto p-8 8xl:rounded-lg bg-slate-800/40 backdrop-blur-sm max-w-8xl">
         <Image src="/img/logo-3-white.svg" alt="Logo" width={96} height={28} onClick={handleLogoClick} />
-        <div className="border-l-2 border-slate-600 pl-8 flex gap-8">
+        <div className="md:border-l-2 border-slate-600 pl-8 flex gap-8">
           <Button text="info" linkRef={introRef} />
           <Button text="specs" linkRef={specsRef} />
           <Button text="contact" linkRef={footerRef} />
