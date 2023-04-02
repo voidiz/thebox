@@ -55,7 +55,7 @@ function Hero() {
             delay: 0.3,
             ease: "easeInOut",
           }}
-          className="text-2xl md:text-5xl text-white text-center font-bold lowercase"
+          className="text-2xl md:text-5xl text-neutral-300 text-center font-bold lowercase"
           ref={heroTextRef}
         >
           revolutionizing boxes since tomorrow.

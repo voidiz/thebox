@@ -19,7 +19,7 @@ function ImageSequence({ assetKey, className = "" }: ImageSequenceProps) {
 
   const { assets, loaded } = useContext(PreloadedAssetsContext);
 
-  const isInView = useInView(parentRef, { margin: "-400px 50px" });
+  const isInView = useInView(parentRef);
 
   const { scrollYProgress } = useScroll({
     target: parentRef,
@@ -63,7 +63,7 @@ function ImageSequence({ assetKey, className = "" }: ImageSequenceProps) {
   }, [drawImage]);
 
   return (
-    <div ref={parentRef} className={className}>
+    <div ref={parentRef} className={`w-full ${className}`}>
       <div className="fixed top-1/2 -translate-y-1/2 w-screen flex items-center justify-center">
         <motion.canvas
           initial={{ opacity: 0 }}
