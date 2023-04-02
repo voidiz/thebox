@@ -6,10 +6,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    screens: {
-      "8xl": "90rem",
-    },
     extend: {
+      screens: {
+        "8xl": "90rem",
+      },
       maxWidth: {
         "8xl": "90rem",
       },
