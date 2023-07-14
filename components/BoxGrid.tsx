@@ -10,7 +10,7 @@ import {
   MotionCanvas,
   motion,
 } from "framer-motion-3d";
-import { MeshProps, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Environment } from "@react-three/drei";
 
